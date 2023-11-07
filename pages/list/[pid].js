@@ -26,13 +26,26 @@ import { setIsBack, setScrollPosition } from "../../store/actions";
 import { useRouter } from "next/router";
 
 export default function List({ items, category, isTab }) {
+	const contentRef = useRef(null);
+	const router = useRouter();
+
+	const handleCatClick = (e) => {
+		if (isTab) {
+			// e.preventDefault();
+			// router.push(e.target.href);
+			contentRef.current.scrollToTop();
+		}
+	};
+
 	const contentJsx = (
 		<>
 			<div className="list-cat">
-				<Link href={"/list/all"}>All</Link>
+				<Link href={"/list/all"}>
+					<a onClick={handleCatClick}>All</a>
+				</Link>
 				{category.map((item, i) => (
 					<Link href={"/list/" + item.id} key={i}>
-						{item.title}
+						<a onClick={handleCatClick}>{item.title}</a>
 					</Link>
 				))}
 			</div>
@@ -50,8 +63,6 @@ export default function List({ items, category, isTab }) {
 	);
 
 	// const contentRef = createRef(); // Add contentRef in ion content
-	const contentRef = useRef(null);
-	const router = useRouter();
 
 	// useEffect(() => {
 	// 	let xp = sessionStorage.getItem("xp");
@@ -93,18 +104,14 @@ export default function List({ items, category, isTab }) {
 				// setTimeout(() => {
 				contentRef.current.scrollToPoint(0, yp[router.pathname]);
 				// }, 100);
+			} else {
+				setScrollPosition(router.pathname, 0);
 			}
 			return () => {
 				setIsBack(false);
 			};
 		}
 	}, [isBack]);
-
-	// useEffect(() => {
-	// 	window.addEventListener("scroll", (ev) => {
-	// 		console.log(window.scrollY);
-	// 	});
-	// }, []);
 
 	return (
 		<>
