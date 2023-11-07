@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.app",
+  "appName": "nextjs-ionic-core-components-demo",
+  "webDir": "out",
+  "server": {
+    "androidScheme": "https"
+  }
+}

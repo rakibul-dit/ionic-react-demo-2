@@ -1,0 +1,39 @@
+.list-cat {
+	display: flex;
+	justify-content: space-evenly;
+	position: fixed;
+	z-index: 99;
+	width: 100%;
+	margin: auto;
+	background: #f2f2f2;
+}
+.header {
+	position: fixed;
+	z-index: 999;
+	background: silver;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+.mobile-menu {
+	width: 200px;
+}
+.content {
+	width: 90%;
+	margin: auto;
+	padding-top: 6rem;
+	min-height: calc(100vh - 48px);
+}
+.footer-link {
+	display: flex;
+	justify-content: space-between;
+	color: blue;
+}
+.card {
+	border: 1px solid grey;
+	padding: 10px;
+	margin: 8px 0;
+}
+.card p {
+	font-size: 18px;
+}
